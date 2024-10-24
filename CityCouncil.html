@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map 1 Details</title>
+    <title>Portland City Council Race 2022</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- Link to the same external CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Link to the same external CSS for consistency -->
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <a class="navbar-brand" href="#">Gonzalez 2020</a>
+            <a class="navbar-brand" href="#">Portland City Council Race 2022</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,38 +23,53 @@
         </nav>
     </header>
 
-    <!-- Map 1 Details Section -->
+    <!-- Map Details Section -->
     <section class="container my-5">
         <div class="text-center mb-5">
             <iframe src="https://steve-the-map-maker.github.io/CityCouncil/" width="1200" height="600" style="border: 1px solid #fff; padding: 10px; background: #2c2c2c; margin-top: 20px;"></iframe>
         </div>
         <p>Access the full dashboard <a href="https://steve-the-map-maker.github.io/CityCouncil/" target="_blank">here</a>.</p>
 
-        <h3 class="text-center mt-5">Portland Election Results: Data Overview</h3>
-<p>Welcome to our detailed analysis of the election results by precinct in Portland. This overview focuses solely on the data, providing insights into how different precincts performed in the recent election.</p>
-<h4>Precincts by Percentage Won</h4>
-<p>Our data reveals significant variations in the percentage of votes won across different precincts within Portland:</p>
-<ul>
-    <li>0% - 20%: 0 precincts</li>
-    <li>20% - 40%: 8 precincts</li>
-    <li>40% - 60%: 45 precincts</li>
-    <li>60% - 80%: 47 precincts</li>
-    <li>80% - 100%: 0 precincts</li>
-</ul>
-<p>The majority of precincts have a winning percentage between 40% and 80%, indicating a strong performance in this range.</p>
-<h4>Precinct Size by Vote Count</h4>
-<p>The size of the precincts based on the total vote count is distributed as follows:</p>
-<ul>
-    <li>0 - 2316 votes: 28 precincts</li>
-    <li>2317 - 3888 votes: 26 precincts</li>
-    <li>3889 - 5512 votes: 24 precincts</li>
-    <li>5513+ votes: 22 precincts</li>
-</ul>
-<p>The precincts are fairly evenly distributed across the different size ranges, with a slight majority having between 0 and 2316 votes.</p>
-<h4>Understanding the Vote Distribution</h4>
-<p>Despite no precincts falling in the extreme ranges of 0% - 20% and 80% - 100% for the percentage won, there is a concentration in the mid-range percentages. This suggests a competitive election with many precincts achieving moderate levels of support. Additionally, the distribution of vote counts across precincts indicates a balanced representation of precinct sizes, with no extreme outliers.</p>
+        <h3 class="text-center mt-5">Portland City Council Election Results: Data Overview</h3>
+        <p>Welcome to my analysis of the election results of the 2022 city council race by precinct between Rene Gonzalas and JoAnn Hardesty. This overview focuses solely on the data, providing insights into how different precincts performed in the recent election.</p>
+        
+        <h4>Precincts by Percentage Won</h4>
+        <p>Below is the results for Gonzalas broken up into how he did in each precinct:</p>
+        <ul>
+            <li>0% - 20%: 0 precincts</li>
+            <li>20% - 40%: 8 precincts</li>
+            <li>40% - 60%: 45 precincts</li>
+            <li>60% - 80%: 47 precincts</li>
+            <li>80% - 100%: 0 precincts</li>
+        </ul>
+        
+        <h4>Precinct Size by Vote Count</h4>
+        <p>The size of the precincts based on the total vote count is distributed as follows:</p>
+        <ul>
+            <li>0 - 2316 votes: 28 precincts</li>
+            <li>2317 - 3888 votes: 26 precincts</li>
+            <li>3889 - 5512 votes: 24 precincts</li>
+            <li>5513+ votes: 22 precincts</li>
+        </ul>
+        <p>The precincts are fairly evenly distributed across the different size ranges, with a slight majority having between 0 and 2316 votes.</p>
+        
+        <h4>Understanding the Vote Distribution</h4>
+        <p>Despite no precincts falling in the extreme ranges of 0% - 20% and 80% - 100% for the percentage won, there is a concentration in the mid-range percentages. This suggests a competitive election with many precincts achieving moderate levels of support. Additionally, the distribution of vote counts across precincts indicates a balanced representation of precinct sizes, with no extreme outliers.</p>
+    </section>
 
+    <!-- How the Map Was Made Section -->
+    <section class="container my-5">
+        <h3 class="text-center mt-5">How the Map Was Made</h3>
+        <p>The interactive map of the Portland City Council race was created using multiple tools and datasets to provide an accurate view of the electoral landscape across Portland.</p>
+        <ul>
+            <li><strong>Mapping Library:</strong> The map is built using <a href="https://maplibre.org/" target="_blank">MapLibre</a>, an open-source mapping library that enables the creation of high-quality, interactive web maps.</li>
+            <li><strong>Basemap:</strong> The basemap is from <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, providing a comprehensive and community-sourced geographic base layer.</li>
+            <li><strong>Data Sources:</strong> The election results data is sourced from Multnomah County, and the map was created by joining the results with precinct boundary data in GeoJSON format, based on precinct numbers.</li>
+        </ul>
+        <p>The process involved cleaning and transforming the data, joining the precinct-level election results to the geographical boundaries, and visualizing this information using modern web mapping tools to provide an engaging and informative overview of the election.</p>
+    </section>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

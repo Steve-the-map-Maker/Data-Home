@@ -1,61 +1,131 @@
 body {
-    background-color: #2c2c2c;
-    color: #ffffff;
-}
-.navbar {
-    background-color: #1f1f1f;
-}
-.navbar-brand, .nav-link {
-    color: #ffffff !important;
-}
-.hero {
-    background-image: url('your-background-image.jpg'); /* Replace with your background image URL */
+    font-family: 'Poppins', sans-serif;
+    background-color: #1b1b1b;
+    color: #e6e6e6;
+  }
+  
+  .navbar {
+    background-color: #121212;
+    border-bottom: 1px solid #333;
+  }
+  
+  .navbar-brand,
+  .nav-link {
+    color: #e6e6e6 !important;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #00bcd4 !important;
+  }
+  
+  .hero {
     background-size: cover;
     background-position: center;
-    color: white;
+    color: #e6e6e6;
     text-align: center;
     padding: 150px 0;
-}
-.card {
-    background-color: #3d3d3d;
-    color: #ffffff;
-}
-.footer {
-    background-color: #1f1f1f;
-}
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-.btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-}
-
-table {
-    width: 100%;
+    font-weight: 600;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+  }
+  
+  .horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #00bcd4 #2a2a2a;
+  }
+  
+  .horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: #00bcd4;
+    border-radius: 10px;
+  }
+  
+  .horizontal-scroll::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  
+  .card {
+    background-color: #2a2a2a;
+    color: #e6e6e6;
+    border: 1px solid #333;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 300px; /* Set a min-width for horizontal scrolling */
+    width: 300px; /* Ensure cards have a fixed width */
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card-title {
+    font-weight: 600;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .btn-outline-info {
+    border-color: #00bcd4;
+    color: #00bcd4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-outline-info:hover {
+    background-color: #00bcd4;
+    color: #fff;
+  }
+  
+  .footer {
+    background-color: #121212;
+    padding: 20px 0;
+    color: #999;
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+  }
+  
+  table {
+    color: #e0e0e0; /* Lighter color for all text */
+    background-color: #2a2a2a;
     border-collapse: collapse;
-    margin-bottom: 20px;
 }
-th, td {
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+}
+
+table th {
+    color: #ffffff; /* Even lighter for the header */
+    background-color: #1c1c1c; /* Slightly darker header background */
+}
+
+table tbody tr {
+    color: #e6e6e6; /* Ensure table rows text is light */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #333; /* Lighter grey for even rows */
+}
+
+table tbody tr:hover {
+    background-color: #444; /* Even lighter hover effect */
+}
+
+.table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #555;
+    border-radius: 10px;
     padding: 10px;
-    border: 1px solid #fff;
-}
-th {
-    background-color: #444;
-}
-td {
-    background-color: #555;
-}
-
-.card {
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.min-vh-100 {
-    min-height: 100vh;
 }

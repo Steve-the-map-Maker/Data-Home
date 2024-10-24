@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Forecast Model</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Use your existing stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai-sublime.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <a class="navbar-brand" href="#">Election Forecast</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="container my-5">
+        <h1 class="text-center">Election Forecast: Methods and Results</h1>
+
+        <!-- Introduction -->
+        <div class="mb-5">
+            <h2>Introduction</h2>
+            <p>The objective of this analysis is to forecast vote totals per precinct in an upcoming race between Rene Gonzalez and Carmen Rubio. The forecast is based on historical election data, including previous races involving these candidates and other relevant electoral outcomes. By utilizing machine learning techniques, specifically a Gradient Boosting Regressor, we aim to predict voter turnout and candidate support at a precinct level, providing insights into the factors influencing electoral behavior.</p>
+        </div>
+
+        <!-- Data Sources -->
+        <div class="mb-5">
+            <h2>Data Sources</h2>
+            <ul>
+                <li><strong>Rene Gonzalez vs. Jo Ann Hardesty Data:</strong> Contains precinct-level voting results from the previous race between Rene Gonzalez and Jo Ann Hardesty, including total votes, votes for each candidate, and their respective percentages.</li>
+                <li><strong>Carmen Rubio's 2020 Election Data:</strong> Provides precinct-level data from Carmen Rubio's last race in 2020, including the number of votes she received and total ballots cast.</li>
+                <li><strong>Additional Electoral Data:</strong> Includes results from other relevant races and measures, such as the District Attorney race, Metro measures, Multnomah County Commissioner race, and US Representative race. This dataset provides percentages of votes for various candidates and measures, which serve as additional features for the model.</li>
+            </ul>
+        </div>
+
+        <!-- Data Preprocessing -->
+        <div class="mb-5">
+            <h2>Data Preprocessing</h2>
+            <p>The datasets were loaded using pandas, and necessary columns were selected to streamline the analysis. Missing values were handled by filling them with zeros or appropriate statistical measures. The datasets were then merged on the 'Precinct' column to form a consolidated DataFrame containing all the necessary features for model training and prediction.</p>
+
+            <!-- Code Snippet: Data Loading -->
+            <h3>Loading Data</h3>
+            <pre><code class="language-python">import pandas as pd
+
+# Load datasets
+rg_data = pd.read_csv('Precinct_2022.csv')
+rubio_data = pd.read_csv('Rubio.csv')
+additional_data = pd.read_csv('WeightedAveragePrecinctRank.csv')</code></pre>
+            <p>This code loads the three datasets used for the analysis.</p>
+        </div>
+
+        <!-- Feature Engineering -->
+        <div class="mb-5">
+            <h2>Feature Engineering</h2>
+            <p>Features such as registered voters and past candidate percentages were created to help the model make predictions. Examples include:</p>
+            <ul>
+                <li><strong>Registered_Voters:</strong> Represents the number of registered voters in each precinct.</li>
+                <li><strong>Past Performance Percentages:</strong> Includes features like Rene Gonzalez's Past Percent, Jo Ann Hardesty's Past Percent, and Mike Schmidt's District Attorney Race Percent, calculated from past voting data.</li>
+            </ul>
+
+            <!-- Code Snippet: Feature Creation -->
+            <h3>Creating New Features</h3>
+            <pre><code class="language-python">data['Registered_Voters'] = data['Registered_Voters']
+data['Rene_Gonzalez_Past_Percent'] = data['RG_Votes'] / data['Total_Votes']</code></pre>
+        </div>
+
+        <!-- Model Training -->
+        <div class="mb-5">
+            <h2>Model Training and Evaluation</h2>
+            <p>The data was split into training and testing sets, and features were scaled to ensure consistency. A Gradient Boosting Regressor was then trained to predict total votes per precinct based on the engineered features. The model was evaluated using Mean Squared Error (MSE) and R-squared metrics, and cross-validation was performed to assess robustness.</p>
+
+            <!-- Code Snippet: Model Training -->
+            <h3>Model Training</h3>
+            <pre><code class="language-python">from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Split data and scale features
+scaler = StandardScaler()
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Train model
+model = GradientBoostingRegressor()
+model.fit(X_train, y_train)</code></pre>
+        </div>
+
+        <!-- Forecast Results Table -->
+        <div class="mb-5">
+            <h2>Forecast Results</h2>
+            <p>The table below shows the predicted vote totals per precinct for the upcoming race between Carmen Rubio and Rene Gonzalez. These predictions help in understanding which precincts are likely to support each candidate more significantly.</p>
+            <div class="table-responsive" style="max-height: 400px; overflow-y: scroll;">
+                <table class="table table-striped" id="forecast-table">
+                    <thead>
+                        <tr>
+                            <th>Precinct</th>
+                            <th>Registered Voters</th>
+                            <th>Predicted Total Votes</th>
+                            <th>Carmen Votes</th>
+                            <th>Rene Votes</th>
+                            <th>SHAP Values</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be dynamically generated using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Feature Importance Analysis -->
+        <div class="mb-5">
+            <h2>Feature Importance Analysis</h2>
+            <p>The model's <code>feature_importances_</code> attribute was used to determine the influence of each feature. Features such as <strong>Registered_Voters</strong> and <strong>Mike Schmidt's District Attorney Race Percent</strong> were among the most important, indicating that the number of registered voters and support for Mike Schmidt in the District Attorney race significantly impacted voter turnout predictions.</p>
+
+            <!-- Feature Importance Plot -->
+            <h3>Feature Importance Analysis</h3>
+<img src="media/Figure_1.png" alt="Feature Importance Plot" class="img-fluid w-100 mb-3">
+        </div>
+
+        <!-- SHAP Value Analysis -->
+        <div class="mb-5">
+            <h2>Model Interpretation Using SHAP Values</h2>
+            <p>To further understand the model's predictions, SHAP (SHapley Additive exPlanations) values were used. SHAP values help explain the contribution of each feature for each individual prediction, which is crucial for understanding the model's reasoning at a granular level.</p>
+            <p>For example, a high SHAP value for <strong>Registered_Voters</strong> in a particular precinct indicates that the number of registered voters played a significant positive role in predicting high voter turnout for that precinct. Conversely, lower values for other features, like <strong>Metro_NO_Percent</strong>, may indicate that they did not significantly influence predictions in certain precincts.</p>
+
+            <!-- SHAP Value Plot -->
+            <h3>SHAP Value Analysis</h3>
+<img src="media/Figure_2.png" alt="SHAP Summary Plot" class="img-fluid w-100 mb-3">
+            <p>The SHAP analysis shows that <strong>Registered_Voters</strong> and <strong>Mike Schmidt's District Attorney Race Percent</strong> were the most impactful features across multiple precincts, indicating that voter registration numbers and District Attorney race outcomes are consistently influential in predicting voter behavior. The individual SHAP plots for each precinct also provide transparency in how the model arrived at specific predictions, helping validate the reliability of the forecasted outcomes.</p>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="mb-5">
+            <h2>Conclusion</h2>
+            <p>This forecast model provides insights into voter behavior and helps predict how precincts might vote in the upcoming race between Carmen Rubio and Rene Gonzalez. By utilizing feature importance and SHAP values, we were able to identify key drivers in the election outcome, such as voter registration counts and previous race performances.</p>
+            <p>The interpretability provided by SHAP values allows campaign strategists to understand which factors are most influential in different precincts, ultimately supporting more informed decision-making for resource allocation and voter outreach strategies.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="text-center">&copy; 2024 Election Model</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Load CSV data and render it into the table using PapaParse
+        $(document).ready(function() {
+            Papa.parse('media/election_forecast_detailed.csv', {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const tableBody = $('#forecast-table tbody');
+                    results.data.forEach(function(row) {
+                        const tableRow = `<tr>
+                            <td>${row['Precinct']}</td>
+                            <td>${row['Registered_Voters']}</td>
+                            <td>${row['Predicted_Total_Votes']}</td>
+                            <td>${row['Carmen_Votes']}</td>
+                            <td>${row['Rene_Votes']}</td>
+                            <td>${row['SHAP_Values']}</td>
+                            <td>${row['Interpretation']}</td>
+                        </tr>`;
+                        tableBody.append(tableRow);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
