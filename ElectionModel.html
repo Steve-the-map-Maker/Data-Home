@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Election Forecast Model</title>
+    <title>Forecasting Precinct-Level Vote Totals for the Upcoming Portland Mayoral Election</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"> <!-- Use your existing stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai-sublime.min.css">
@@ -23,7 +23,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-
                 </ul>
             </div>
         </nav>
@@ -31,81 +30,115 @@
 
     <!-- Main Content Section -->
     <section class="container my-5">
-        <h1 class="text-center">Election Forecast: Methods and Results</h1>
+        <h1 class="text-center">Forecasting Precinct-Level Vote Totals for the Upcoming Portland Mayoral Election</h1>
+
+        <!-- Abstract -->
+        <div class="mb-5">
+            <h2>Abstract</h2>
+            <p>This blog post presents a predictive analysis aimed at forecasting precinct-level vote totals in the upcoming Portland mayoral race between Rene Gonzalez and Carmen Rubio. Utilizing historical electoral data and advanced machine learning techniques—specifically, a Gradient Boosting Regressor—we develop a model to predict voter turnout and candidate support. The analysis provides insights into the factors influencing electoral behavior and offers detailed interpretations of the model's predictions.</p>
+        </div>
 
         <!-- Introduction -->
         <div class="mb-5">
-            <h2>Introduction</h2>
-            <p>The objective of this analysis is to forecast vote totals per precinct in an upcoming race between Rene Gonzalez and Carmen Rubio. The forecast is based on historical election data, including previous races involving these candidates and other relevant electoral outcomes. By utilizing machine learning techniques, specifically a Gradient Boosting Regressor, we aim to predict voter turnout and candidate support at a precinct level, providing insights into the factors influencing electoral behavior.</p>
+            <h2>1. Introduction</h2>
+            <p>Accurate forecasting of electoral outcomes at the precinct level is invaluable for campaign strategists, political analysts, and policymakers. It enables targeted campaigning, efficient resource allocation, and a deeper understanding of voter behavior patterns. This study focuses on the upcoming Portland mayoral election, featuring candidates Rene Gonzalez and Carmen Rubio. By leveraging historical election data and sophisticated machine learning models, we aim to predict voter turnout and candidate support at a granular precinct level.</p>
         </div>
 
         <!-- Data Sources -->
         <div class="mb-5">
-            <h2>Data Sources</h2>
+            <h2>2. Data Sources</h2>
+            <p>Three primary datasets were utilized in this analysis:</p>
+            <ol>
+                <li><strong>2022 Rene Gonzalez vs. Jo Ann Hardesty Election Data</strong>
+                    <ul>
+                        <li>Contains precinct-level voting results from the previous mayoral race.</li>
+                        <li>Includes total votes, votes for each candidate, vote percentages, and write-in votes.</li>
+                    </ul>
+                </li>
+                <li><strong>2020 Carmen Rubio Election Data </strong>
+                    <ul>
+                        <li>Provides precinct-level data from Carmen Rubio's previous election.</li>
+                        <li>Includes the number of votes she received and the total ballots cast per precinct.</li>
+                    </ul>
+                </li>
+                <li><strong>Additional Electoral Data </strong>
+                    <ul>
+                        <li>Includes results from other relevant races and measures.</li>
+                        <li>District Attorney race (Mike Schmidt vs. Nathan Vasquez).</li>
+                        <li>Metro measure voting percentages (Yes and No votes).</li>
+
+                            <li> Multnomah County Commissioner race (Julia Brim-Edwards).</li>
+
+                                <li>U.S. Representative race (Maxine E. Dexter).</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Methodology -->
+        <div class="mb-5">
+            <h2>3. Methodology</h2>
+
+            <!-- Data Preprocessing -->
+            <h3>3.1 Data Preprocessing</h3>
+            <p>Data preprocessing involved loading and merging datasets, handling missing values, and converting data types:</p>
             <ul>
-                <li><strong>Rene Gonzalez vs. Jo Ann Hardesty Data:</strong> Contains precinct-level voting results from the previous race between Rene Gonzalez and Jo Ann Hardesty, including total votes, votes for each candidate, and their respective percentages.</li>
-                <li><strong>Carmen Rubio's 2020 Election Data:</strong> Provides precinct-level data from Carmen Rubio's last race in 2020, including the number of votes she received and total ballots cast.</li>
-                <li><strong>Additional Electoral Data:</strong> Includes results from other relevant races and measures, such as the District Attorney race, Metro measures, Multnomah County Commissioner race, and US Representative race. This dataset provides percentages of votes for various candidates and measures, which serve as additional features for the model.</li>
+                <li><strong>Data Loading:</strong> All datasets were loaded using pandas DataFrames for efficient data manipulation.</li>
+                <li><strong>Column Selection and Renaming:</strong> Relevant columns were selected, and columns with special characters or spaces were renamed for consistency and ease of use.</li>
+                <li><strong>Data Merging:</strong> The datasets were merged on the <code>Precinct</code> column using an outer join to ensure all precincts were included.</li>
+                <li><strong>Handling Missing Values:</strong> Numerical columns with missing values were filled with zeros.</li>
+                <li><strong>Data Type Conversion:</strong> All numerical features and percentage columns were converted to appropriate numeric data types.</li>
             </ul>
-        </div>
 
-        <!-- Data Preprocessing -->
-        <div class="mb-5">
-            <h2>Data Preprocessing</h2>
-            <p>The datasets were loaded using pandas, and necessary columns were selected to streamline the analysis. Missing values were handled by filling them with zeros or appropriate statistical measures. The datasets were then merged on the 'Precinct' column to form a consolidated DataFrame containing all the necessary features for model training and prediction.</p>
-
-            <!-- Code Snippet: Data Loading -->
-            <h3>Loading Data</h3>
-            <pre><code class="language-python">import pandas as pd
-
-# Load datasets
-rg_data = pd.read_csv('Precinct_2022.csv')
-rubio_data = pd.read_csv('Rubio.csv')
-additional_data = pd.read_csv('WeightedAveragePrecinctRank.csv')</code></pre>
-            <p>This code loads the three datasets used for the analysis.</p>
-        </div>
-
-        <!-- Feature Engineering -->
-        <div class="mb-5">
-            <h2>Feature Engineering</h2>
-            <p>Features such as registered voters and past candidate percentages were created to help the model make predictions. Examples include:</p>
+            <!-- Feature Engineering -->
+            <h3>3.2 Feature Engineering</h3>
+            <p>New features were created to enhance the model's predictive capabilities:</p>
             <ul>
-                <li><strong>Registered_Voters:</strong> Represents the number of registered voters in each precinct.</li>
-                <li><strong>Past Performance Percentages:</strong> Includes features like Rene Gonzalez's Past Percent, Jo Ann Hardesty's Past Percent, and Mike Schmidt's District Attorney Race Percent, calculated from past voting data.</li>
+                <li><strong>Registered Voters:</strong> Derived from the <code>Registered_</code> column.</li>
+                <li><strong>Past Performance Percentages:</strong> Calculated for each candidate and measure (e.g., <code>RG_Past_Percent</code>, <code>Rubio_Past_Percent</code>).</li>
             </ul>
 
-            <!-- Code Snippet: Feature Creation -->
-            <h3>Creating New Features</h3>
-            <pre><code class="language-python">data['Registered_Voters'] = data['Registered_Voters']
-data['Rene_Gonzalez_Past_Percent'] = data['RG_Votes'] / data['Total_Votes']</code></pre>
-        </div>
+            <!-- Model Training and Evaluation -->
+            <h3>3.3 Model Training and Evaluation</h3>
+            <p>The model training process involved several key steps:</p>
+            <ul>
+                <li><strong>Feature Scaling:</strong> Used <code>StandardScaler</code> to standardize features.</li>
+                <li><strong>Data Splitting:</strong> Split the data into training and testing sets using an 80/20 split.</li>
+                <li><strong>Model Selection:</strong> Employed a Gradient Boosting Regressor for its robustness.</li>
+                <li><strong>Model Evaluation:</strong> Evaluated using Mean Squared Error (MSE) and R-squared metrics. Cross-validation was also performed.</li>
+            </ul>
 
-        <!-- Model Training -->
+           
+
+        <!-- Results -->
         <div class="mb-5">
-            <h2>Model Training and Evaluation</h2>
-            <p>The data was split into training and testing sets, and features were scaled to ensure consistency. A Gradient Boosting Regressor was then trained to predict total votes per precinct based on the engineered features. The model was evaluated using Mean Squared Error (MSE) and R-squared metrics, and cross-validation was performed to assess robustness.</p>
+            <h2>4. Results</h2>
 
-            <!-- Code Snippet: Model Training -->
-            <h3>Model Training</h3>
-            <pre><code class="language-python">from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+            <!-- Model Performance -->
+            <h3>4.1 Model Performance</h3>
+            <p>The model demonstrated strong predictive capabilities:</p>
+            <ul>
+                <li><strong>Mean Squared Error (MSE):</strong> 225,813.56</li>
+                <li><strong>R-squared (R²):</strong> 0.85</li>
+                <li><strong>Cross-Validated R² Score:</strong> Average of 0.82 across five folds</li>
+            </ul>
 
-# Split data and scale features
-scaler = StandardScaler()
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+            <!-- Feature Importance -->
+            <h3>4.2 Feature Importance</h3>
+            <p>The analysis revealed the following insights:</p>
+            <ul>
+                <li><strong>Registered_Voters:</strong> Most significant predictor of total votes.</li>
+                <li><strong>DA_Schmidt_Percent:</strong> High support for Mike Schmidt is associated with higher voter turnout.</li>
+                <li><strong>Other Influential Features:</strong> Past vote percentages for candidates and measures also contribute meaningfully.</li>
+            </ul>
 
-# Train model
-model = GradientBoostingRegressor()
-model.fit(X_train, y_train)</code></pre>
-        </div>
+            <!-- Feature Importance Plot -->
+            <h4>Feature Importance Plot</h4>
+            <img src="media/Figure_1.png" alt="Feature Importance Plot" class="img-fluid w-100 mb-3">
 
-        <!-- Forecast Results Table -->
-        <div class="mb-5">
-            <h2>Forecast Results</h2>
-            <p>The table below shows the predicted vote totals per precinct for the upcoming race between Carmen Rubio and Rene Gonzalez. These predictions help in understanding which precincts are likely to support each candidate more significantly.</p>
+            <!-- Precinct-Level Predictions -->
+            <h3>4.3 Precinct-Level Predictions</h3>
+            <p>The top precincts by predicted total votes are as follows:</p>
             <div class="table-responsive" style="max-height: 400px; overflow-y: scroll;">
                 <table class="table table-striped" id="forecast-table">
                     <thead>
@@ -124,44 +157,321 @@ model.fit(X_train, y_train)</code></pre>
                     </tbody>
                 </table>
             </div>
+
+            <!-- SHAP Value Analysis -->
+            <h3>4.4 SHAP Value Analysis</h3>
+            <p>SHAP values were used to understand feature contributions at the precinct level:</p>
+            <ul>
+                <li><strong>Precinct 4501:</strong> Prediction influenced most by <code>DA_Schmidt_Percent</code> and <code>Registered_Voters</code>.</li>
+                <li><strong>Precinct 2805:</strong> Similar influences observed.</li>
+                <li><strong>Precinct 4502:</strong> Consistent patterns with top features impacting predictions.</li>
+            </ul>
+
+            <!-- SHAP Summary Plot -->
+            <h4>SHAP Summary Plot</h4>
+            <img src="media/Figure_2.png" alt="SHAP Summary Plot" class="img-fluid w-100 mb-3">
         </div>
 
-        <!-- Feature Importance Analysis -->
+        <!-- Interpretation -->
         <div class="mb-5">
-            <h2>Feature Importance Analysis</h2>
-            <p>The model's <code>feature_importances_</code> attribute was used to determine the influence of each feature. Features such as <strong>Registered_Voters</strong> and <strong>Mike Schmidt's District Attorney Race Percent</strong> were among the most important, indicating that the number of registered voters and support for Mike Schmidt in the District Attorney race significantly impacted voter turnout predictions.</p>
+            <h2>5. Interpretation</h2>
 
-            <!-- Feature Importance Plot -->
-            <h3>Feature Importance Analysis</h3>
-<img src="media/Figure_1.png" alt="Feature Importance Plot" class="img-fluid w-100 mb-3">
-        </div>
+            <!-- Key Findings -->
+            <h3>5.1 Key Findings</h3>
+            <ul>
+                <li><strong>Influence of Registered Voters:</strong> Primary driver of total votes.</li>
+                <li><strong>Impact of Past Support for Mike Schmidt:</strong> Correlation with higher voter turnout.</li>
+                <li><strong>Candidate-Specific Insights:</strong> Carmen Rubio's past performance is a strong indicator of future support.</li>
+            </ul>
 
-        <!-- SHAP Value Analysis -->
-        <div class="mb-5">
-            <h2>Model Interpretation Using SHAP Values</h2>
-            <p>To further understand the model's predictions, SHAP (SHapley Additive exPlanations) values were used. SHAP values help explain the contribution of each feature for each individual prediction, which is crucial for understanding the model's reasoning at a granular level.</p>
-            <p>For example, a high SHAP value for <strong>Registered_Voters</strong> in a particular precinct indicates that the number of registered voters played a significant positive role in predicting high voter turnout for that precinct. Conversely, lower values for other features, like <strong>Metro_NO_Percent</strong>, may indicate that they did not significantly influence predictions in certain precincts.</p>
-
-            <!-- SHAP Value Plot -->
-            <h3>SHAP Value Analysis</h3>
-<img src="media/Figure_2.png" alt="SHAP Summary Plot" class="img-fluid w-100 mb-3">
-            <p>The SHAP analysis shows that <strong>Registered_Voters</strong> and <strong>Mike Schmidt's District Attorney Race Percent</strong> were the most impactful features across multiple precincts, indicating that voter registration numbers and District Attorney race outcomes are consistently influential in predicting voter behavior. The individual SHAP plots for each precinct also provide transparency in how the model arrived at specific predictions, helping validate the reliability of the forecasted outcomes.</p>
+            <!-- Implications for Campaign Strategies -->
+            <h3>5.2 Implications for Campaign Strategies</h3>
+            <p>These insights suggest targeted areas where campaign efforts could be concentrated to maximize voter engagement and support:</p>
+            <ul>
+                <li>Focus on precincts with high numbers of registered voters.</li>
+                <li>Leverage areas with strong past support for aligned candidates.</li>
+                <li>Tailor messaging to resonate with precinct-specific concerns.</li>
+            </ul>
         </div>
 
         <!-- Conclusion -->
         <div class="mb-5">
-            <h2>Conclusion</h2>
-            <p>This forecast model provides insights into voter behavior and helps predict how precincts might vote in the upcoming race between Carmen Rubio and Rene Gonzalez. By utilizing feature importance and SHAP values, we were able to identify key drivers in the election outcome, such as voter registration counts and previous race performances.</p>
-            <p>The interpretability provided by SHAP values allows campaign strategists to understand which factors are most influential in different precincts, ultimately supporting more informed decision-making for resource allocation and voter outreach strategies.</p>
+            <h2>6. Conclusion</h2>
+            <p>This analysis provides a comprehensive forecast of precinct-level vote totals for the upcoming Portland mayoral election. By integrating historical election data with advanced machine learning techniques, we have identified key factors influencing voter turnout and candidate support. The findings offer valuable insights for campaign strategists and contribute to a deeper understanding of electoral dynamics in Portland.</p>
+        </div>
+
+
+        <!-- Appendix -->
+        <div class="mb-5">
+            <h2>Appendix</h2>
+
+            <!-- Code Implementation -->
+            <h3>A. Code Implementation</h3>
+            <pre><code class="language-python">
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+
+# For model training and evaluation
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error, r2_score
+
+# For explanations and visualizations
+import shap
+import matplotlib.pyplot as plt
+
+# Load the datasets
+rg_jh_data = pd.read_csv()
+rubio_data = pd.read_csv()
+additional_data = pd.read_csv()
+
+# Preprocess the data
+
+# For rg_jh_data
+rg_jh_columns = [
+    'Precinct', 'Total Votes',
+    'RG_Votes', 'RG_Percent', 'JH_Votes', 'JH_Percent', 'Write_in'
+]
+rg_jh_data = rg_jh_data[rg_jh_columns]
+
+# For rubio_data
+rubio_columns = [
+    'Precinct', 'Total_Votes', 'Votes'
+]
+rubio_data = rubio_data[rubio_columns]
+
+# Rename 'Votes' to 'Rubio_Votes' for clarity
+rubio_data.rename(columns={
+    'Votes': 'Rubio_Votes'
+}, inplace=True)
+
+# Convert 'Rubio_Votes' and 'Total_Votes' to numeric, handling errors
+rubio_data['Rubio_Votes'] = pd.to_numeric(rubio_data['Rubio_Votes'], errors='coerce')
+rubio_data['Total_Votes'] = pd.to_numeric(rubio_data['Total_Votes'], errors='coerce')
+
+# Calculate Rubio's vote percentage
+rubio_data['Rubio_Percent'] = rubio_data['Rubio_Votes'] / rubio_data['Total_Votes']
+rubio_data['Rubio_Percent'] = rubio_data['Rubio_Percent'].fillna(0)
+
+# For additional_data (replacing may_primary_data)
+additional_columns = [
+    'Precinct', 'Registered_',
+    'District Attorney, Multnomah County (Vote for 1)_Mike Schmidt',
+    'District Attorney, Multnomah County (Vote for 1)_Nathan Vasquez',
+    'Percent Metro NO',
+    'Percent Metro YES',
+    'Multnomah County Commissioner, District 3 (Vote for 1)_Julia Brim-Edwards',
+    'US Representative, 3rd District (DEM) (Vote for 1)_Maxine E Dexter'
+]
+additional_data = additional_data[additional_columns]
+
+additional_data.rename(columns={
+    'District Attorney, Multnomah County (Vote for 1)_Mike Schmidt': 'DA_Schmidt',
+    'District Attorney, Multnomah County (Vote for 1)_Nathan Vasquez': 'DA_Vasquez',
+    'Percent Metro NO': 'Metro_NO_Percent',
+    'Percent Metro YES': 'Metro_YES_Percent',
+    'Multnomah County Commissioner, District 3 (Vote for 1)_Julia Brim-Edwards': 'Commissioner_BrimEdwards',
+    'US Representative, 3rd District (DEM) (Vote for 1)_Maxine E Dexter': 'USRep_Dexter'
+}, inplace=True)
+
+
+# Convert percentage columns to numeric
+percentage_columns = [
+    'DA_Schmidt', 'DA_Vasquez',
+    'Metro_NO_Percent', 'Metro_YES_Percent',
+    'Commissioner_BrimEdwards', 'USRep_Dexter'
+]
+for col in percentage_columns:
+    additional_data[col] = pd.to_numeric(additional_data[col], errors='coerce')
+
+# Handle missing values in percentage columns
+additional_data[percentage_columns] = additional_data[percentage_columns].fillna(0)
+
+# Merge datasets on 'Precinct'
+data = rg_jh_data.merge(
+    rubio_data[['Precinct', 'Rubio_Percent']], on='Precinct', how='left'
+)
+data = data.merge(
+    additional_data, on='Precinct', how='left'
+)
+
+# Handle missing values by filling with zeros
+data.fillna(0, inplace=True)
+
+# Feature Engineering
+
+# Create 'Registered_Voters' and 'Total_Votes' columns
+data['Registered_Voters'] = data['Registered_']
+data['Total_Votes'] = data['Total Votes']
+
+# Include past performance features
+data['RG_Past_Percent'] = data['RG_Percent']
+data['JH_Past_Percent'] = data['JH_Percent']
+data['Rubio_Past_Percent'] = data['Rubio_Percent']
+data['DA_Schmidt_Percent'] = data['DA_Schmidt']
+data['DA_Vasquez_Percent'] = data['DA_Vasquez']
+data['Metro_NO_Percent'] = data['Metro_NO_Percent']
+data['Metro_YES_Percent'] = data['Metro_YES_Percent']
+data['Commissioner_BrimEdwards_Percent'] = data['Commissioner_BrimEdwards']
+data['USRep_Dexter_Percent'] = data['USRep_Dexter']
+
+# Replace any remaining NaN or infinite values with zeros
+data.replace([np.inf, -np.inf], np.nan, inplace=True)
+data.fillna(0, inplace=True)
+
+# Prepare the feature matrix X and target variable y
+
+# Define features to be used in the model
+features = [
+    'Registered_Voters',
+    'RG_Past_Percent',
+    'JH_Past_Percent',
+    'Rubio_Past_Percent',
+    'DA_Schmidt_Percent',
+    'DA_Vasquez_Percent',
+    'Metro_NO_Percent',
+    'Metro_YES_Percent',
+    'Commissioner_BrimEdwards_Percent',
+    'USRep_Dexter_Percent'
+]
+
+X = data[features]
+y = data['Total_Votes']
+
+# Scale features for better model performance
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Split the data into training and testing sets (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(
+    X_scaled, y, test_size=0.2, random_state=42
+)
+
+# Create and train the regression model
+model = GradientBoostingRegressor(random_state=42)
+model.fit(X_train, y_train)
+
+# Evaluate the model on the test set
+y_pred = model.predict(X_test)
+y_pred = np.maximum(y_pred, 0)  # Ensure no negative predictions
+
+# Calculate evaluation metrics
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f'Model Evaluation:\nMSE: {mse:.2f}\nR²: {r2:.2f}')
+
+# Perform cross-validation for more robust evaluation
+scores = cross_val_score(model, X_scaled, y, cv=5, scoring='r2')
+print(f'Cross-validated R² scores: {scores}')
+print(f'Average R² score: {scores.mean():.2f}')
+
+# Feature Importances
+
+# Get feature importances from the model
+importances = model.feature_importances_
+feature_importance_df = pd.DataFrame({
+    'Feature': features,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
+
+print("\nFeature Importances:")
+print(feature_importance_df)
+
+# Plot Feature Importances
+plt.figure(figsize=(8,6))
+plt.barh(feature_importance_df['Feature'], feature_importance_df['Importance'], color='skyblue')
+plt.gca().invert_yaxis()  # Highest importance on top
+plt.xlabel('Importance')
+plt.title('Feature Importances')
+plt.tight_layout()
+plt.show()
+
+# Forecast total votes per precinct in the upcoming race
+data['Predicted_Total_Votes'] = np.maximum(model.predict(X_scaled), 0).round().astype(int)
+
+# Assume Carmen Rubio's vote percentage is similar to her past percentage
+data['Predicted_Carmen_Percent'] = data['Rubio_Past_Percent']
+
+# If Rubio_Past_Percent is zero, use JH_Past_Percent as a proxy
+data.loc[data['Predicted_Carmen_Percent'] == 0, 'Predicted_Carmen_Percent'] = data['JH_Past_Percent']
+
+# Handle cases where percentages are still zero by using the average
+avg_percent = data['Predicted_Carmen_Percent'].mean()
+data['Predicted_Carmen_Percent'] = data['Predicted_Carmen_Percent'].replace(0, avg_percent)
+
+# Ensure percentages are within [0,1]
+data['Predicted_Carmen_Percent'] = data['Predicted_Carmen_Percent'].clip(0, 1)
+
+# Calculate predicted votes for Carmen Rubio and Rene Gonzalez
+data['Carmen_Votes'] = (data['Predicted_Total_Votes'] * data['Predicted_Carmen_Percent']).round().astype(int)
+data['Rene_Votes'] = data['Predicted_Total_Votes'] - data['Carmen_Votes']
+
+# Use SHAP values to explain the model's predictions
+# Note: SHAP can be computationally intensive
+explainer = shap.Explainer(model, X_train)
+shap_values = explainer(X_scaled)
+
+# Add SHAP values to the data
+data['SHAP_Values'] = shap_values.values.sum(axis=1)
+
+# Prepare the final forecast DataFrame
+forecast = data[[
+    'Precinct', 'Registered_Voters', 'Predicted_Total_Votes',
+    'Carmen_Votes', 'Rene_Votes', 'SHAP_Values'
+]]
+
+# Sort forecast by predicted total votes descending
+forecast = forecast.sort_values(by='Predicted_Total_Votes', ascending=False)
+
+# Display the forecasted vote totals per precinct
+print("\nForecasted Vote Totals per Precinct:")
+print(forecast.head(10))
+
+# Save the forecast to a CSV file
+forecast.to_csv('election_forecast.csv', index=False)
+print("\nForecast saved to 'election_forecast.csv'")
+
+# Generate explanations for each precinct
+def interpret_precinct(row):
+    """
+    Generate a textual interpretation of the prediction for a precinct.
+    """
+    precinct = row['Precinct']
+    shap_value = row['SHAP_Values']
+    top_features_indices = np.argsort(np.abs(shap_values[row.name].values))[::-1][:2]
+    feature_names = [features[i] for i in top_features_indices]
+    explanations = f"Precinct {precinct} prediction influenced most by {feature_names[0]} and {feature_names[1]}."
+    return explanations
+
+# Apply the interpretation function to each row
+forecast['Interpretation'] = forecast.apply(interpret_precinct, axis=1)
+
+# Display interpretations for top precincts
+print("\nInterpretations for Top Precincts:")
+print(forecast[['Precinct', 'Interpretation']].head(10))
+
+# Save detailed forecast with interpretations
+forecast.to_csv('election_forecast_detailed.csv', index=False)
+print("\nDetailed forecast saved to 'election_forecast_detailed.csv'")
+
+# Visualize SHAP summary plot (optional)
+# Note: This can take time for large datasets
+shap.summary_plot(shap_values, features=X, feature_names=features)
+</code></pre>
+
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p class="text-center">&copy; 2024 Election Model</p>
-    </footer>
+        <div class="container text-center">
+          <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+        </div>
+      </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS and other scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

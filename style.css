@@ -24,9 +24,13 @@ body {
     background-position: center;
     color: #e6e6e6;
     text-align: center;
-    padding: 150px 0;
+    padding-top: 100px;
     font-weight: 600;
     text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+  }
+
+  .welcom {
+    margin: 0;
   }
   
   .horizontal-scroll {
