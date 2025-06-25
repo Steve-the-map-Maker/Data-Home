@@ -4,19 +4,7 @@ Welcome to my portfolio, where data and creativity come together to map the worl
 
 Each project you’ll find here is an attempt to bring clarity and context to complex topics through the lens of data. Feel free to explore the maps and analyses I’ve created, and discover how different communities and places can be understood more deeply through the power of visual data storytelling.
 
-This repository contains the HTML, CSS, and data files for the portfolio website.
 
-## Running the Portfolio Locally
-
-This is a static website built with HTML, CSS, and JavaScript. To view it locally, you can use a simple local web server.
-
-1.  Clone or download this repository.
-2.  Navigate to the `Data-Home` directory in your terminal.
-3.  If you have Python 3, you can run a simple web server:
-    ```bash
-    python -m http.server
-    ```
-4.  Open your web browser and go to `http://localhost:8000` to see the `index.html` page.
 
 ## Projects
 
