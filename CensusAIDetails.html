@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Census AI Data Visualizer Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Census AI Data Visualizer</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container my-5">
+      <div class="text-center mb-5">
+        <h1 class="text-center mt-5">Census AI Data Visualizer</h1>
+        <p>
+          Interact with the live application here:
+          <a
+            href="https://census-ai-frontend.onrender.com/"
+            target="_blank"
+            >https://census-ai-frontend.onrender.com/</a
+          >
+        </p>
+        <iframe
+          src="https://census-ai-frontend.onrender.com/"
+          width="100%"
+          height="700"
+          style="
+            border: 1px solid #fff;
+            padding: 10px;
+            background: #2c2c2c;
+            margin-top: 20px;
+            border-radius: 10px; /* Added rounded corners */
+          "
+          title="Census AI Data Visualizer"
+        ></iframe>
+      </div>
+
+      <p>
+        The Census AI Data Visualizer is a sophisticated application designed to
+        provide an AI-driven interface for querying and visualizing data from the
+        U.S. Census Bureau API. Unlike traditional dashboards, this application
+        allows users to interact with census data using natural language, making
+        complex statistical information accessible to a broader audience.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>
+          <strong>AI-Powered Natural Language Processing:</strong> Allows users to query U.S. Census data using natural language, integrating initial LLM capabilities with function calling. The backend is resilient, scalable, and geographically-aware, leveraging AI-driven tools to understand user queries.
+        </li>
+        <li>
+          <strong>Comprehensive Census Data Access:</strong> Provides access to over 17 variables across demographics, economics, housing, and education from the U.S. Census Bureau ACS 5-Year Estimates.
+        </li>
+        <li>
+          <strong>Geographic Intelligence:</strong> Features a flexible engine that understands a wide range of Census geographies, their relationships, and user-friendly aliases. It handles hierarchical geography queries, such as retrieving county data within a specified state.
+        </li>
+        <li>
+          <strong>Two-Step AI Orchestration:</strong> Utilizes an advanced two-step process where the AI (Google Gemini Pro) generates tool calls, executes them to retrieve data, and then interprets the raw results to provide high-quality, natural language answers to the user.
+        </li>
+        <li>
+          <strong>Client-Side Data Visualization:</strong> Operates as a frontend-centric application that loads local GeoJSON files. All data merging and interactive map rendering are performed in the browser, empowering the frontend to be highly responsive. It uses a reusable `MapDisplay.jsx` component that dynamically renders choropleth maps for any valid GeoJSON with data.
+        </li>
+        <li>
+          <strong>Data Enrichment and Derived Metrics:</strong> The backend performs server-side calculations for complex, comparative questions (e.g., "Which states have more men than women?"). It supports derived metrics such as Male-Female Population Difference, Unemployment Rate (%), and Owner-Occupied Housing Rate (%).
+        </li>
+        <li>
+          <strong>Enhanced User Experience:</strong> Includes visual loading indicators during query processing, displays clear and user-friendly error messages, and provides initial guidance and example queries to users. Maps feature dynamic legends and interactive tooltips/popups for detailed data display. The design is responsive across different screen sizes.
+        </li>
+      </ul>
+
+      <h2>Technology Stack</h2>
+      <p>
+        This application is built with a robust and modern technology stack:
+      </p>
+      <ul>
+        <li>
+          <strong>Backend:</strong>
+          <ul>
+            <li>
+              <strong>Python 3.12+:</strong> The core logic is implemented in Python.
+            </li>
+            <li>
+              <strong>FastAPI:</strong> A modern, high-performance web framework for building APIs.
+            </li>
+            <li>
+              <strong>Uvicorn:</strong> An ASGI server for FastAPI, enabling asynchronous operations.
+            </li>
+            <li>
+              <strong>Google Gemini Pro:</strong> The Large Language Model (LLM) used for natural language understanding and response generation.
+            </li>
+            <li>
+              <strong>U.S. Census Bureau API:</strong> The primary data source for demographic and economic data.
+            </li>
+            <li>
+              <strong>httpx:</strong> An asynchronous HTTP client for making API calls.
+            </li>
+            <li>
+              <strong>python-dotenv:</strong> Used for secure environment variable management.
+            </li>
+            <li>
+              <strong>Docker:</strong> For containerizing the backend application, ensuring portability and reliable deployment.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Frontend:</strong>
+          <ul>
+            <li>
+              <strong>React with Vite:</strong> A JavaScript library for building user interfaces, with Vite as a fast development build tool.
+            </li>
+            <li>
+              <strong>Leaflet:</strong> An open-source JavaScript library for mobile-friendly interactive maps.
+            </li>
+            <li>
+              <strong>React-Leaflet:</strong> Provides React components for Leaflet maps.
+            </li>
+            <li>
+              <strong>chroma-js:</strong> Used for dynamic color scale generation for map visualizations.
+            </li>
+            <li>
+              <strong>axios:</strong> A promise-based HTTP client for making API requests to the backend.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>How It Was Made</h2>
+      <p>
+        The Census AI Data Visualizer is a full-stack application composed of
+        two distinct services: a backend API and a frontend web interface.
+      </p>
+      <ul>
+        <li>
+          <strong>Backend Development:</strong> The Python backend handles all
+          the heavy lifting, including natural language processing, API
+          interactions with the Census Bureau, and data interpretation. It was
+          designed to be a scalable and efficient service.
+        </li>
+        <li>
+          <strong>Frontend Development:</strong> The React.js frontend provides
+          an intuitive user interface for submitting queries and displaying the
+          results, communicating with the deployed backend API.
+        </li>
+        <li>
+          <strong>Deployment:</strong> Both the backend and frontend components
+          are deployed on Render, a cloud application platform, ensuring the
+          application is publicly accessible and scalable. The `render.yaml`
+          file defines the deployment configuration for the backend service.
+        </li>
+      </ul>
+      <p>
+        This project showcases the integration of advanced AI capabilities with
+        governmental datasets to create a powerful and user-friendly tool for
+        data exploration and understanding.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

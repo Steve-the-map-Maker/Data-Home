@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pickleball Courts Map Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Pickleball Courts Map</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container my-5">
+      <div class="text-center mb-5">
+        <iframe
+          src="https://steve-the-map-maker.github.io/PortlandPickelballMap/"
+          width="1200"
+          height="1000"
+          style="
+            border: 1px solid #fff;
+            padding: 10px;
+            background: #2c2c2c;
+            margin-top: 20px;
+          "
+        ></iframe>
+      </div>
+      <p>
+        Access the full dashboard
+        <a
+          href="https://steve-the-map-maker.github.io/PortlandPickelballMap/"
+          target="_blank"
+          >here</a
+        >.
+      </p>
+
+      <h1 class="text-center mt-5">Pickleball Courts Map: Data Overview</h1>
+      <p>
+        Welcome to an interactive web application designed to help users discover pickleball court locations in the Portland area. This map provides a dynamic visualization of court data and offers various filtering options to enhance your search.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>
+          <strong>Interactive Map Display:</strong> Visualizes pickleball courts on a dynamic MapLibre map.
+        </li>
+        <li>
+          <strong>Geolocation:</strong> Allows users to find courts near their current location.
+        </li>
+        <li>
+          <strong>Advanced Filtering:</strong>
+          <ul>
+            <li>Filter courts by distance from the user (1km to 100km).</li>
+            <li>Filter by court type (Indoor, Outdoor, or Any).</li>
+            <li>Filter by the minimum number of courts available at a location (1 to 8+).</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Dynamic Sidebar:</strong>
+          <ul>
+            <li>Lists courts based on the current map view and active filters.</li>
+            <li>Displays detailed information for a selected court in a slide-in panel, including name, location, and number of courts.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>"Get Directions":</strong> Provides a link to Google Maps for directions to the selected court, pre-filling the user's current location if available.
+        </li>
+        <li>
+          <strong>Dynamic Map Marker Styling:</strong> Map markers are styled based on:
+          <ul>
+            <li>**Size:** Reflects the number of courts at the location (larger circles for more courts).</li>
+            <li>**Color:** Indicates court type (Blue for Indoor, Green for Outdoor, Purple for Both).</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Custom UI Controls:</strong> Includes a custom-styled dropdown for selecting court type with color swatches, and a visual filter for minimum courts using clickable circles.
+        </li>
+        <li>
+          <strong>Responsive Design:</strong> Adapts to different screen sizes, including mobile devices.
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="container my-5">
+      <h3 class="text-center mt-5">How the Map Was Made</h3>
+      <p>
+        The interactive map of pickleball courts was created using several tools and data sources to provide an accurate and user-friendly experience.
+      </p>
+      <ul>
+        <li>
+          <strong>Mapping Library:</strong> The map is built using
+          <a href="https://maplibre.org/" target="_blank">MapLibre GL JS</a>, an
+          open-source mapping library that allows for the creation of high-quality, interactive maps.
+        </li>
+        <li>
+          <strong>Basemap:</strong> The basemap used is from
+          <a href="https://www.openstreetmap.org/" target="_blank"
+            >OpenStreetMap</a
+          >, a community-driven and detailed geographic data provider.
+        </li>
+        <li>
+          <strong>Frontend:</strong> The application is developed with HTML5, CSS3, and JavaScript (ES6+).
+        </li>
+        <li>
+          <strong>Data Format:</strong> The court location data is sourced from a GeoJSON file (`PortlandPickelBallData.geojson`), which is loaded dynamically by the application.
+        </li>
+      </ul>
+      <p>
+        The process involved integrating these data sources and technologies, performing data cleaning and transformation, and ultimately visualizing the data in an interactive manner that makes it easy to find pickleball courts across the Portland area.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
