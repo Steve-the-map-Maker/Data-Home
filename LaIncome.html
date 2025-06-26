@@ -10,12 +10,98 @@
     />
     <link rel="stylesheet" href="style.css" />
     <!-- Link to the external CSS for consistency -->
+    <style>
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 6rem 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.8rem;
+          line-height: 1.3;
+        }
+        
+        .page-header .live-link {
+          font-size: 0.9rem;
+          word-break: break-all;
+        }
+        
+        .iframe-container iframe {
+          height: 60vh !important;
+          min-height: 400px !important;
+        }
+        
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .container-fluid {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        h2 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+        
+        .section {
+          padding: 2rem 0;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        .page-header {
+          padding: 5rem 0.5rem 1.5rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .iframe-container iframe {
+          height: 50vh !important;
+          min-height: 350px !important;
+        }
+        
+        .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        .container-fluid {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">LA Income Distribution</a>
+        <a class="navbar-brand" href="index.html">Steve Lantz</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,148 +115,67 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <!-- Map 1 Details Section -->
-    <section class="container my-5">
-      <div class="text-center mb-5">
-        <iframe
-          src="https://steve-the-map-maker.github.io/LA-Income-React/"
-          width="1200"
-          height="600"
-          style="
-            border: 1px solid #fff;
-            padding: 10px;
-            background: #2c2c2c;
-            margin-top: 20px;
-          "
-        ></iframe>
-      </div>
-      <p>
-        Access the full dashboard
-        <a
-          href="https://steve-the-map-maker.github.io/LA-Income-React/"
-          target="_blank"
-          >here</a
-        >.
-      </p>
-
-      <h3 class="text-center mt-5">
-        Los Angeles and Orange County Income Distribution: Data Overview
-      </h3>
-      <p>
-        Welcome to my interactive analysis of income levels across Los Angeles
-        and Orange County. This dashboard helps visualize the median income of
-        each census tract and provides an understanding of the economic
-        landscape in the region.
-      </p>
-      <h4>Income Levels Across Census Tracts</h4>
-      <p>
-        My data breaks down the median income for different census tracts across
-        LA and Orange County:
-      </p>
-      <ul>
-        <li>
-          Below $30,000: Areas with the darkest shades of green indicate higher
-          income levels.
-        </li>
-        <li>
-          $30,000 - $60,000: These areas are represented by a medium shade of
-          green, showing moderate income levels.
-        </li>
-        <li>
-          $60,000 - $90,000: Lighter shades of green represent census tracts
-          with median incomes falling in this range.
-        </li>
-        <li>
-          Above $90,000: The lightest areas represent the regions with the
-          lowest income levels.
-        </li>
-      </ul>
-      <p>
-        The map offers a dynamic way to interact with the data, showing trends
-        and disparities across the regions of interest.
-      </p>
-
-      <h4>Visual Analysis</h4>
-      <p>
-        <strong>Interactive Map:</strong> The interactive web map provides a
-        detailed spatial breakdown of the median income distribution across the
-        Los Angeles area. The gradient colors visually represent varying income
-        levels, with darker greens indicating higher incomes and lighter shades
-        indicating lower ones.
-      </p>
-      <p>
-        <strong>Income Distribution Chart:</strong> The chart displays income
-        distribution within the region, highlighting the number of census tracts
-        in each income bracket.
-      </p>
-      <p>
-        These visualizations aim to make it easier to understand income
-        inequalities and the diversity of economic statuses across different
-        neighborhoods in Los Angeles and Orange County.
-      </p>
+    <section class="page-header">
+        <div class="container">
+            <h1>LA and Orange County Census Income Map</h1>
+            <p class="live-link">Live Dashboard: <a href="https://steve-the-map-maker.github.io/LA-Income-React/" target="_blank">steve-the-map-maker.github.io/LA-Income-React/</a></p>
+        </div>
     </section>
 
-    <!-- How the Map Was Made Section -->
-    <section class="container my-5">
-      <h3 class="text-center mt-5">How the Map Was Made</h3>
-      <p>
-        The interactive map was created using several tools and data sources to
-        provide an accurate representation of income distribution across Los
-        Angeles and Orange County.
-      </p>
-      <ul>
-        <li>
-          <strong>Mapping Library:</strong> The map is built using
-          <a href="https://maplibre.org/" target="_blank">MapLibre</a>, an
-          open-source mapping library that allows for high-quality, interactive
-          visualizations.
-        </li>
-        <li>
-          <strong>Basemap:</strong> The basemap used is from
-          <a href="https://www.openstreetmap.org/" target="_blank"
-            >OpenStreetMap</a
-          >, which provides a detailed and community-driven geographic base
-          layer.
-        </li>
-        <li>
-          <strong>Frontend Framework:</strong> The application is developed
-          using <a href="https://reactjs.org/" target="_blank">React</a>, a
-          powerful JavaScript library for building user interfaces, which
-          enables dynamic rendering of map components.
-        </li>
-        <li>
-          <strong>Data Sources:</strong> The data used in the map comes from the
-          <a href="https://www.census.gov/" target="_blank"
-            >U.S. Census Bureau</a
-          >. Specifically, it combines two different datasets: census tract data
-          and income data. These datasets were joined using census tract
-          identifiers to provide a complete view of the income distribution.
-        </li>
-      </ul>
-      <p>
-        The process of creating the map involved integrating these data sources
-        and technologies, performing data cleaning and transformation, and
-        ultimately visualizing the data in an interactive manner that makes it
-        easy to understand spatial patterns in income across the region.
-      </p>
+    <section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="iframe-container">
+                        <iframe src="https://steve-the-map-maker.github.io/LA-Income-React/" title="LA and Orange County Census Income Map" style="width: 100%; height: 80vh; min-height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>Project Overview</h2>
+                    <p>This interactive analysis visualizes median income levels across Los Angeles and Orange County census tracts, providing insights into the region's economic landscape.</p>
+
+                    <h2>Income Levels Across Census Tracts</h2>
+                    <p>My data breaks down the median income for different census tracts across LA and Orange County:</p>
+                    <ul>
+                        <li>Below $30,000: Areas with the lightest shades of green indicate lower income levels.</li>
+                        <li>$30,000 - $60,000: These areas are represented by a medium shade of green, showing moderate income levels.</li>
+                        <li>$60,000 - $90,000: Darker shades of green represent census tracts with median incomes falling in this range.</li>
+                        <li>Above $90,000: The darkest areas represent the regions with the highest income levels.</li>
+                    </ul>
+
+                    <h2>Visual Analysis</h2>
+                    <p><strong>Interactive Map:</strong> The interactive web map provides a detailed spatial breakdown of the median income distribution. The gradient colors visually represent varying income levels, with darker greens indicating higher incomes and lighter shades indicating lower ones.</p>
+                    <p><strong>Income Distribution Chart:</strong> The chart displays income distribution within the region, highlighting the number of census tracts in each income bracket.</p>
+
+                    <h2>Technology Stack</h2>
+                    <ul>
+                        <li>Mapping Library: MapLibre</li>
+                        <li>Basemap: OpenStreetMap</li>
+                        <li>Frontend Framework: React</li>
+                        <li>Data Sources: U.S. Census Bureau (census tract data and income data)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container text-center">
-        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2025 Steve Lantz Portfolio. All Rights Reserved.</p>
       </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -3,19 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portland City Council Race 2022</title>
+    <title>Portland City Council Election Results (2022)</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
     <!-- Link to the same external CSS for consistency -->
+    <style>
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 6rem 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.8rem;
+          line-height: 1.3;
+        }
+        
+        .page-header .live-link {
+          font-size: 0.9rem;
+          word-break: break-all;
+        }
+        
+        .iframe-container iframe {
+          height: 60vh !important;
+          min-height: 400px !important;
+        }
+        
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .container-fluid {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        h2 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+        
+        .section {
+          padding: 2rem 0;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        .page-header {
+          padding: 5rem 0.5rem 1.5rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .iframe-container iframe {
+          height: 50vh !important;
+          min-height: 350px !important;
+        }
+        
+        .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        .container-fluid {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Portland City Council Race 2022</a>
+        <a class="navbar-brand" href="index.html">Steve Lantz</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,133 +115,75 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <!-- Map Details Section -->
-    <section class="container my-5">
-      <div class="text-center mb-5">
-        <iframe
-          src="https://steve-the-map-maker.github.io/CityCouncil/"
-          width="1200"
-          height="600"
-          style="
-            border: 1px solid #fff;
-            padding: 10px;
-            background: #2c2c2c;
-            margin-top: 20px;
-          "
-        ></iframe>
-      </div>
-      <p>
-        Access the full dashboard
-        <a
-          href="https://steve-the-map-maker.github.io/CityCouncil/"
-          target="_blank"
-          >here</a
-        >.
-      </p>
-
-      <h3 class="text-center mt-5">
-        Portland City Council Election Results: Data Overview
-      </h3>
-      <p>
-        Welcome to my analysis of the election results of the 2022 city council
-        race by precinct between Rene Gonzalas and JoAnn Hardesty. This overview
-        focuses solely on the data, providing insights into how different
-        precincts performed in the recent election.
-      </p>
-
-      <h4>Precincts by Percentage Won</h4>
-      <p>
-        Below is the results for Gonzalas broken up into how he did in each
-        precinct:
-      </p>
-      <ul>
-        <li>0% - 20%: 0 precincts</li>
-        <li>20% - 40%: 8 precincts</li>
-        <li>40% - 60%: 45 precincts</li>
-        <li>60% - 80%: 47 precincts</li>
-        <li>80% - 100%: 0 precincts</li>
-      </ul>
-
-      <h4>Precinct Size by Vote Count</h4>
-      <p>
-        The size of the precincts based on the total vote count is distributed
-        as follows:
-      </p>
-      <ul>
-        <li>0 - 2316 votes: 28 precincts</li>
-        <li>2317 - 3888 votes: 26 precincts</li>
-        <li>3889 - 5512 votes: 24 precincts</li>
-        <li>5513+ votes: 22 precincts</li>
-      </ul>
-      <p>
-        The precincts are fairly evenly distributed across the different size
-        ranges, with a slight majority having between 0 and 2316 votes.
-      </p>
-
-      <h4>Understanding the Vote Distribution</h4>
-      <p>
-        Despite no precincts falling in the extreme ranges of 0% - 20% and 80% -
-        100% for the percentage won, there is a concentration in the mid-range
-        percentages. This suggests a competitive election with many precincts
-        achieving moderate levels of support. Additionally, the distribution of
-        vote counts across precincts indicates a balanced representation of
-        precinct sizes, with no extreme outliers.
-      </p>
+    <section class="page-header">
+        <div class="container">
+            <h1>Portland City Council Election Results (2022)</h1>
+            <p class="live-link">Live Dashboard: <a href="https://steve-the-map-maker.github.io/CityCouncil/" target="_blank">steve-the-map-maker.github.io/CityCouncil/</a></p>
+        </div>
     </section>
 
-    <!-- How the Map Was Made Section -->
-    <section class="container my-5">
-      <h3 class="text-center mt-5">How the Map Was Made</h3>
-      <p>
-        The interactive map of the Portland City Council race was created using
-        multiple tools and datasets to provide an accurate view of the electoral
-        landscape across Portland.
-      </p>
-      <ul>
-        <li>
-          <strong>Mapping Library:</strong> The map is built using
-          <a href="https://maplibre.org/" target="_blank">MapLibre</a>, an
-          open-source mapping library that enables the creation of high-quality,
-          interactive web maps.
-        </li>
-        <li>
-          <strong>Basemap:</strong> The basemap is from
-          <a href="https://www.openstreetmap.org/" target="_blank"
-            >OpenStreetMap</a
-          >, providing a comprehensive and community-sourced geographic base
-          layer.
-        </li>
-        <li>
-          <strong>Data Sources:</strong> The election results data is sourced
-          from Multnomah County, and the map was created by joining the results
-          with precinct boundary data in GeoJSON format, based on precinct
-          numbers.
-        </li>
-      </ul>
-      <p>
-        The process involved cleaning and transforming the data, joining the
-        precinct-level election results to the geographical boundaries, and
-        visualizing this information using modern web mapping tools to provide
-        an engaging and informative overview of the election.
-      </p>
+    <section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="iframe-container">
+                        <iframe src="https://steve-the-map-maker.github.io/CityCouncil/" title="Portland City Council Election Results (2022)" style="width: 100%; height: 80vh; min-height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>Project Overview</h2>
+                    <p>This analysis focuses on the election results of the 2022 Portland City Council race between Rene Gonzalez and JoAnn Hardesty, providing insights into precinct-level performance.</p>
+
+                    <h2>Precincts by Percentage Won</h2>
+                    <p>Below are the results for Gonzalas broken up into how he did in each precinct:</p>
+                    <ul>
+                        <li>0% - 20%: 0 precincts</li>
+                        <li>20% - 40%: 8 precincts</li>
+                        <li>40% - 60%: 45 precincts</li>
+                        <li>60% - 80%: 47 precincts</li>
+                        <li>80% - 100%: 0 precincts</li>
+                    </ul>
+
+                    <h2>Precinct Size by Vote Count</h2>
+                    <p>The size of the precincts based on the total vote count is distributed as follows:</p>
+                    <ul>
+                        <li>0 - 2316 votes: 28 precincts</li>
+                        <li>2317 - 3888 votes: 26 precincts</li>
+                        <li>3889 - 5512 votes: 24 precincts</li>
+                        <li>5513+ votes: 22 precincts</li>
+                    </ul>
+
+                    <h2>Understanding the Vote Distribution</h2>
+                    <p>Despite no precincts falling in the extreme ranges of 0% - 20% and 80% - 100% for the percentage won, there is a concentration in the mid-range percentages. This suggests a competitive election with many precincts achieving moderate levels of support. Additionally, the distribution of vote counts across precincts indicates a balanced representation of precinct sizes, with no extreme outliers.</p>
+
+                    <h2>Technology Stack</h2>
+                    <ul>
+                        <li>Mapping Library: MapLibre</li>
+                        <li>Basemap: OpenStreetMap</li>
+                        <li>Data Sources: Multnomah County election results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container text-center">
-        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2025 Steve Lantz Portfolio. All Rights Reserved.</p>
       </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

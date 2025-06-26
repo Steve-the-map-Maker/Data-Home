@@ -1,135 +1,440 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #1b1b1b;
-    color: #e6e6e6;
-  }
-  
-  .navbar {
-    background-color: #121212;
-    border-bottom: 1px solid #333;
-  }
-  
-  .navbar-brand,
-  .nav-link {
-    color: #e6e6e6 !important;
-    font-weight: 500;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #00bcd4 !important;
-  }
-  
-  .hero {
-    background-size: cover;
-    background-position: center;
-    color: #e6e6e6;
-    text-align: center;
-    padding-top: 100px;
-    font-weight: 600;
-    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
-  }
-
-  .welcom {
-    margin: 0;
-  }
-  
-  .horizontal-scroll {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #00bcd4 #2a2a2a;
-  }
-  
-  .horizontal-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  .horizontal-scroll::-webkit-scrollbar-thumb {
-    background-color: #00bcd4;
-    border-radius: 10px;
-  }
-  
-  .horizontal-scroll::-webkit-scrollbar-track {
-    background: #2a2a2a;
-  }
-  
-  .card {
-    background-color: #2a2a2a;
-    color: #e6e6e6;
-    border: 1px solid #333;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-width: 300px; /* Set a min-width for horizontal scrolling */
-    width: 300px; /* Ensure cards have a fixed width */
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-  }
-  
-  .card-title {
-    font-weight: 600;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .btn-outline-info {
-    border-color: #00bcd4;
-    color: #00bcd4;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .btn-outline-info:hover {
-    background-color: #00bcd4;
-    color: #fff;
-  }
-  
-  .footer {
-    background-color: #121212;
-    padding: 20px 0;
-    color: #999;
-    text-align: center;
-    border-top: 1px solid #333;
-    margin-top: 50px;
-  }
-  
-  table {
-    color: #e0e0e0; /* Lighter color for all text */
-    background-color: #2a2a2a;
-    border-collapse: collapse;
+:root {
+  --color-background-deep: #0d0d0d;
+  --color-background: #1a1a1a;
+  --color-surface: #2a2a2a;
+  --color-border: #333;
+  --color-text-primary: #e6e6e6;
+  --color-text-secondary: #b3b3b3;
+  --color-accent: #00bcd4;
+  --color-accent-hover: #00e5ff;
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Roboto Slab', serif;
+  --space-unit: 1rem;
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: var(--space-unit);
+  --space-md: calc(1.5 * var(--space-unit));
+  --space-lg: calc(2.5 * var(--space-unit));
+  --space-xl: calc(4 * var(--space-unit));
+  --transition-fast: all 0.3s ease-in-out;
 }
 
-table th, table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #555;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.bg-dark {
+    background-color: var(--color-background-deep) !important;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar-brand {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+}
+
+.nav-link {
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--color-accent-hover) !important;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Page Header for Detail Pages */
+.page-header {
+    padding-top: 120px; /* Adjust for fixed navbar */
+    padding-bottom: var(--space-lg);
+    background-color: var(--color-background-deep);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.page-header h1 {
+    color: var(--color-accent);
+}
+
+.page-header .live-link {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+}
+
+
+/* Project Cards */
+.project-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-accent);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    color: var(--color-accent);
+}
+
+/* Skills Section */
+.skill-item {
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    transition: var(--transition-fast);
+    height: 100%;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    background-color: #3a3a3a;
+}
+
+.skill-item h5 {
+    color: var(--color-accent);
+    font-family: var(--font-secondary);
+}
+
+/* Contact Section */
+#contact .btn-outline-info {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-background-deep);
+  padding: var(--space-md) 0;
+  color: var(--color-text-secondary);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Responsive Iframe Container */
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.iframe-container iframe {
+  display: block; /* Ensures iframe behaves as a block element */
+  width: 100%;
+  border: none;
+}
+
+/* General Link and Button Styles */
+a {
+  color: var(--color-accent);
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: none;
+}
+
+.btn-outline-info {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transition: var(--transition-fast);
+  font-weight: 600;
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus {
+  background-color: var(--color-accent);
+  color: var(--color-background-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+}
+
+/* Table Styles */
+table {
+  color: #f8f8f8; /* Brighter color for all text */
+  background-color: var(--color-surface);
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
 }
 
 table th {
-    color: #ffffff; /* Even lighter for the header */
-    background-color: #1c1c1c; /* Slightly darker header background */
+  color: #ffffff; /* Even lighter for the header */
+  background-color: var(--color-background-deep);
 }
 
 table tbody tr {
-    color: #e6e6e6; /* Ensure table rows text is light */
+  color: #f8f8f8; /* Ensure table rows text is light */
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #333; /* Lighter grey for even rows */
+  background-color: #333; /* Lighter grey for even rows */
 }
 
 table tbody tr:hover {
-    background-color: #444; /* Even lighter hover effect */
+  background-color: #444; /* Even lighter hover effect */
 }
 
 .table-responsive {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #555;
-    border-radius: 10px;
-    padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Typography adjustments for mobile */
+  .display-3 {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+  
+  .display-4 {
+    font-size: 2rem !important;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  /* Navigation improvements */
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  /* Hero section mobile optimizations */
+  .hero {
+    background-attachment: scroll; /* Better performance on mobile */
+    min-height: 100vh;
+    padding: 0 1rem;
+  }
+  
+  .hero h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .hero .lead {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Page header adjustments */
+  .page-header {
+    padding-top: 100px;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .page-header .live-link {
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+
+  /* Project cards mobile optimization */
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-card .card-body {
+    padding: 1.25rem;
+  }
+  
+  .project-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .project-card .card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Button adjustments */
+  .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Skills section mobile */
+  .skill-item {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .skill-item h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Contact section */
+  #contact .btn-outline-info {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Iframe container mobile optimization */
+  .iframe-container {
+    margin: 1rem 0;
+    border-radius: 4px;
+  }
+  
+  .iframe-container iframe {
+    height: 60vh !important;
+    min-height: 400px !important;
+  }
+
+  /* Table responsiveness */
+  .table-responsive {
+    font-size: 0.85rem;
+    max-height: 300px;
+    padding: 5px;
+  }
+  
+  table th,
+  table td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+  
+  /* Better spacing for mobile */
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Collapsible sections mobile */
+  .collapse.show {
+    margin-top: 1rem;
+  }
+  
+  /* Footer mobile */
+  .footer {
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+  .display-3 {
+    font-size: 2rem !important;
+  }
+  
+  .hero {
+    padding: 0 0.5rem;
+  }
+  
+  .page-header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .project-card .card-body {
+    padding: 1rem;
+  }
+  
+  .iframe-container iframe {
+    height: 50vh !important;
+    min-height: 350px !important;
+  }
+  
+  table th,
+  table td {
+    padding: 6px 4px;
+    font-size: 0.75rem;
+  }
 }

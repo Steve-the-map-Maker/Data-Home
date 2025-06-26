@@ -3,19 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Map 1 Details</title>
+    <title>Portland Age Demographics: Interactive Dashboard</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
     <!-- Link to the same external CSS -->
+    <style>
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 6rem 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.8rem;
+          line-height: 1.3;
+        }
+        
+        .page-header .live-link {
+          font-size: 0.9rem;
+          word-break: break-all;
+        }
+        
+        .iframe-container iframe {
+          height: 60vh !important;
+          min-height: 400px !important;
+        }
+        
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .container-fluid {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        h2 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+        
+        .section {
+          padding: 2rem 0;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        .page-header {
+          padding: 5rem 0.5rem 1.5rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .iframe-container iframe {
+          height: 50vh !important;
+          min-height: 350px !important;
+        }
+        
+        .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        .container-fluid {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
+        
+        .col-lg-8, .col-lg-10 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Portland By Age</a>
+        <a class="navbar-brand" href="index.html">Steve Lantz</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,156 +115,78 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <!-- Map 1 Details Section -->
-    <section class="container my-5">
-      <div class="text-center mb-5">
-        <iframe
-          src="https://steve-the-map-maker.github.io/PortlandByAge/"
-          width="1200"
-          height="600"
-          style="
-            border: 1px solid #fff;
-            padding: 10px;
-            background: #2c2c2c;
-            margin-top: 20px;
-          "
-        ></iframe>
-      </div>
-      <p>
-        Access the full dashboard
-        <a
-          href="https://steve-the-map-maker.github.io/PortlandByAge/"
-          target="_blank"
-          >here</a
-        >.
-      </p>
-
-      <h3 class="text-center mt-5">
-        Portland Age Demographic Distribution: Data Overview
-      </h3>
-      <p>
-        Welcome to our detailed analysis of Portland's age demographic
-        distribution. This overview focuses solely on the data, providing
-        insights into how different age groups are spread across the city's
-        neighborhoods.
-      </p>
-      <h4>Census Tracts by Age Range</h4>
-      <p>
-        Our data reveals significant variations in the median age across
-        different census tracts within Portland:
-      </p>
-      <ul>
-        <li>18-30 years: 3 tracts</li>
-        <li>31-40 years: 120 tracts</li>
-        <li>41-50 years: 44 tracts</li>
-        <li>51-60 years: 4 tracts</li>
-        <li>61+ years: 0 tracts</li>
-      </ul>
-      <p>
-        The majority of census tracts have a median age between 31 and 40 years,
-        indicating a concentration of this age range within the city.
-      </p>
-      <h4>Population Distribution by Age Group</h4>
-      <p>
-        The population distribution across different age groups is as follows:
-      </p>
-      <ul>
-        <li>18-30 years: 25,175 individuals</li>
-        <li>31-40 years: 39,060 individuals</li>
-        <li>41-50 years: 151,207 individuals</li>
-        <li>51-60 years: 131,808 individuals</li>
-        <li>61+ years: 213,764 individuals</li>
-      </ul>
-      <p>
-        A substantial portion of Portland's population falls within the 61+
-        years age range, highlighting the dominance of this demographic in the
-        city.
-      </p>
-      <h4>Understanding the Age Distribution</h4>
-      <p>
-        Despite the 61+ years age group being the largest in terms of population
-        size, the median age of the population is younger, specifically between
-        31 and 40 years. This discrepancy can be attributed to the distribution
-        of the population across various age groups. While the 61+ age group has
-        a significant number of individuals, the combined population of younger
-        age groups (18-30 years, 31-40 years, and 41-50 years) is substantial
-        enough to lower the overall median age. Additionally, the presence of
-        younger families and working-age adults in Portland contributes to a
-        lower median age, reflecting a balanced age distribution rather than a
-        skewed one.
-      </p>
-      <h4>Visual Analysis</h4>
-      <p>
-        <strong>Interactive Map:</strong> Our interactive map provides a spatial
-        representation of the age demographics across Portland. Each area is
-        color-coded to reflect the median age range, allowing users to quickly
-        identify neighborhoods with specific age characteristics.
-      </p>
-      <p>
-        <strong>Bar Chart:</strong> The bar chart displays the number of census
-        tracts within each median age range. It clearly shows that the 31-40
-        years age range is the most prevalent, with 120 tracts falling into this
-        category.
-      </p>
-      <p>
-        <strong>Pie Chart:</strong> The pie chart breaks down the population by
-        age group, emphasizing that the majority of Portland's population is
-        within the 61+ years range. This chart offers a quick overview of the
-        population distribution across different age groups.
-      </p>
+    <section class="page-header">
+        <div class="container">
+            <h1>Portland Age Demographics: Interactive Dashboard</h1>
+            <p class="live-link">Live Dashboard: <a href="https://steve-the-map-maker.github.io/PortlandByAge/" target="_blank">steve-the-map-maker.github.io/PortlandByAge/</a></p>
+        </div>
     </section>
 
-    <!-- How the Map Was Made Section -->
-    <section class="container my-5">
-      <h3 class="text-center mt-5">How the Map Was Made</h3>
-      <p>
-        The interactive map was created using several tools and data sources to
-        provide an accurate representation of income distribution across the
-        city of Portland.
-      </p>
-      <ul>
-        <li>
-          <strong>Mapping Library:</strong> The map is built using
-          <a href="https://maplibre.org/" target="_blank">MapLibre</a>, an
-          open-source mapping library that allows for high-quality, interactive
-          visualizations.
-        </li>
-        <li>
-          <strong>Basemap:</strong> The basemap used is from
-          <a href="https://www.openstreetmap.org/" target="_blank"
-            >OpenStreetMap</a
-          >, which provides a detailed and community-driven geographic base
-          layer.
-        </li>
-        <li>
-          <strong>Data Sources:</strong> The data used in the map comes from the
-          <a href="https://www.census.gov/" target="_blank"
-            >U.S. Census Bureau</a
-          >. Specifically, it combines two different datasets: census tract data
-          and income data. These datasets were joined using census tract
-          identifiers to provide a complete view of the age distribution.
-        </li>
-      </ul>
-      <p>
-        The process of creating the map involved integrating these data sources
-        and technologies, performing data cleaning and transformation, and
-        ultimately visualizing the data in an interactive manner that makes it
-        easy to understand spatial patterns in age across the region.
-      </p>
+    <section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="iframe-container">
+                        <iframe src="https://steve-the-map-maker.github.io/PortlandByAge/" title="Portland Age Demographics: Interactive Dashboard" style="width: 100%; height: 80vh; min-height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>Project Overview</h2>
+                    <p>This dashboard provides a detailed analysis of Portland's age demographic distribution, offering insights into how different age groups are spread across the city's neighborhoods.</p>
+
+                    <h2>Census Tracts by Age Range</h2>
+                    <p>Our data reveals significant variations in the median age across different census tracts within Portland:</p>
+                    <ul>
+                        <li>18-30 years: 3 tracts</li>
+                        <li>31-40 years: 120 tracts</li>
+                        <li>41-50 years: 44 tracts</li>
+                        <li>51-60 years: 4 tracts</li>
+                        <li>61+ years: 0 tracts</li>
+                    </ul>
+
+                    <h2>Population Distribution by Age Group</h2>
+                    <p>The population distribution across different age groups is as follows:</p>
+                    <ul>
+                        <li>18-30 years: 25,175 individuals</li>
+                        <li>31-40 years: 39,060 individuals</li>
+                        <li>41-50 years: 151,207 individuals</li>
+                        <li>51-60 years: 131,808 individuals</li>
+                        <li>61+ years: 213,764 individuals</li>
+                    </ul>
+
+                    <h2>Understanding the Age Distribution</h2>
+                    <p>Despite the 61+ years age group being the largest in terms of population size, the median age of the population is younger, specifically between 31 and 40 years. This discrepancy can be attributed to the distribution of the population across various age groups. While the 61+ age group has a significant number of individuals, the combined population of younger age groups (18-30 years, 31-40 years, and 41-50 years) is substantial enough to lower the overall median age. Additionally, the presence of younger families and working-age adults in Portland contributes to a lower median age, reflecting a balanced age distribution rather than a skewed one.</p>
+
+                    <h2>Visual Analysis</h2>
+                    <p><strong>Interactive Map:</strong> Our interactive map provides a spatial representation of the age demographics across Portland. Each area is color-coded to reflect the median age range, allowing users to quickly identify neighborhoods with specific age characteristics.</p>
+                    <p><strong>Bar Chart:</strong> The bar chart displays the number of census tracts within each median age range. It clearly shows that the 31-40 years age range is the most prevalent, with 120 tracts falling into this category.</p>
+                    <p><strong>Pie Chart:</strong> The pie chart breaks down the population by age group, emphasizing that the majority of Portland's population is within the 61+ years range. This chart offers a quick overview of the population distribution across different age groups.</p>
+
+                    <h2>Technology Stack</h2>
+                    <ul>
+                        <li>Mapping Library: MapLibre</li>
+                        <li>Basemap: OpenStreetMap</li>
+                        <li>Data Sources: U.S. Census Bureau (census tract data and age data)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container text-center">
-        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2025 Steve Lantz Portfolio. All Rights Reserved.</p>
       </div>
     </footer>
 

@@ -3,19 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Map 1 Details</title>
+    <title>Portland DA Race Results: Vasquez vs Schmidt 2024</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <!-- Link to the same external CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .section {
+        padding: 2rem 0;
+      }
+      .page-header {
+        padding: 8rem 0 3rem;
+      }
+      .iframe-container {
+        margin-bottom: 3rem;
+      }
+      h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .table-responsive {
+        margin: 1.5rem 0;
+      }
+      
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 6rem 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.8rem;
+          line-height: 1.3;
+        }
+        
+        .page-header .live-link {
+          font-size: 0.9rem;
+          word-break: break-all;
+        }
+        
+        .iframe-container {
+          margin-bottom: 2rem;
+        }
+        
+        .iframe-container iframe {
+          height: 60vh !important;
+          min-height: 400px !important;
+        }
+        
+        .container-fluid {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        h2 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .col-lg-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .table-responsive {
+          font-size: 0.85rem;
+          margin: 1rem 0;
+        }
+        
+        table th,
+        table td {
+          padding: 8px 6px;
+          font-size: 0.8rem;
+        }
+        
+        .collapse.show {
+          margin-top: 1rem;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        .page-header {
+          padding: 5rem 0.5rem 1.5rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .container-fluid {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        .iframe-container iframe {
+          height: 50vh !important;
+          min-height: 350px !important;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
+        
+        .col-lg-10 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        table th,
+        table td {
+          padding: 6px 4px;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <!-- Header -->
+<body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" href="#"> Vasquez vs Schmidt 2024 </a>
+        <a class="navbar-brand" href="index.html">Steve Lantz</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,295 +141,183 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <!-- Map 1 Details Section -->
-    <section class="container my-5">
-      <div class="text-center mb-5">
-        <iframe
-          src="https://steve-the-map-maker.github.io/DA-Results/"
-          width="1200"
-          height="1000"
-          style="
-            border: 1px solid #fff;
-            padding: 10px;
-            background: #2c2c2c;
-            margin-top: 20px;
-          "
-        ></iframe>
-      </div>
-      <p>
-        Access the full dashboard
-        <a
-          href="https://steve-the-map-maker.github.io/DA-Results/"
-          target="_blank"
-          >here</a
-        >.
-      </p>
-
-      <h1>Portland Election Results: Data Overview</h1>
-      <p>
-        Welcome to our detailed analysis of the election results by district in
-        Multnomah County. This overview focuses solely on the data, providing
-        insights into how different districts performed in the recent election
-        for the DA.
-      </p>
-
-      <h2>District Results</h2>
-      <p>
-        Our data reveals the following vote counts for the candidates across
-        different districts within Multnomah County and the City of Portland:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>District</th>
-            <th>Candidate</th>
-            <th>County Votes</th>
-            <th>City Votes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="3">Multnomah Co Commissioner District 1</td>
-            <td>Mike Schmidt</td>
-            <td>25,439</td>
-            <td>24,494</td>
-          </tr>
-          <tr>
-            <td>Nathan Vasquez</td>
-            <td>30,500</td>
-            <td>28,693</td>
-          </tr>
-          <tr>
-            <td>Write-In Votes</td>
-            <td>200</td>
-            <td>185</td>
-          </tr>
-          <tr>
-            <td rowspan="3">Multnomah Co Commissioner District 2</td>
-            <td>Mike Schmidt</td>
-            <td>30,485</td>
-            <td>29,010</td>
-          </tr>
-          <tr>
-            <td>Nathan Vasquez</td>
-            <td>27,601</td>
-            <td>26,297</td>
-          </tr>
-          <tr>
-            <td>Write-In Votes</td>
-            <td>225</td>
-            <td>209</td>
-          </tr>
-          <tr>
-            <td rowspan="3">Multnomah Co Commissioner District 3</td>
-            <td>Mike Schmidt</td>
-            <td>21,032</td>
-            <td>20,349</td>
-          </tr>
-          <tr>
-            <td>Nathan Vasquez</td>
-            <td>20,837</td>
-            <td>19,907</td>
-          </tr>
-          <tr>
-            <td>Write-In Votes</td>
-            <td>226</td>
-            <td>225</td>
-          </tr>
-          <tr>
-            <td rowspan="3">Multnomah Co Commissioner District 4</td>
-            <td>Mike Schmidt</td>
-            <td>9,993</td>
-            <td>24,271</td>
-          </tr>
-          <tr>
-            <td>Nathan Vasquez</td>
-            <td>20,720</td>
-            <td>43,022</td>
-          </tr>
-          <tr>
-            <td>Write-In Votes</td>
-            <td>214</td>
-            <td>34</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Total Results</h2>
-      <p>The aggregated vote counts for all districts combined are:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Candidate</th>
-            <th>County Votes</th>
-            <th>City Votes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Mike Schmidt</td>
-            <td>86,949</td>
-            <td>76,280</td>
-          </tr>
-          <tr>
-            <td>Nathan Vasquez</td>
-            <td>99,658</td>
-            <td>79,199</td>
-          </tr>
-          <tr>
-            <td>Write-In Votes</td>
-            <td>865</td>
-            <td>653</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Understanding the Vote Distribution</h2>
-      <p>
-        The data indicates a competitive race, with each district showing varied
-        support for the candidates. The distribution of votes across districts
-        highlights different levels of candidate preference, which can provide
-        insights into regional support trends and voter turnout.
-      </p>
-
-      <p>
-        Comparing county-wide results to the City of Portland's results, Nathan
-        Vasquez generally leads in both contexts. However, the vote distribution
-        in the city shows a more pronounced lead for Vasquez, especially in
-        District 4, suggesting stronger urban support. This highlights potential
-        differences in voting patterns between urban and broader county regions.
-      </p>
-
-      <h2>Methods</h2>
-      <p>
-        This section describes the data processing and visualization methods
-        used in this analysis.
-      </p>
-
-      <h3>Data Processing</h3>
-      <p>
-        The data normalization process was critical in ensuring fair comparison
-        across different precincts. By normalizing the vote counts, we were able
-        to highlight the relative performance of candidates in smaller versus
-        larger precincts. This process involved adjusting vote counts to a
-        common scale, which mitigated the effect of varying precinct sizes.
-        Transparency in the visualization was used to represent this normalized
-        data, where higher transparency indicated lower normalized values, and
-        vice versa. This approach provided a clearer visual distinction between
-        precincts with varying levels of voter support.
-      </p>
-
-      <h3>Data Visualization</h3>
-      <p>
-        The map visualization employs a color gradient to depict the percentage
-        of votes for Nathan Vasquez across different precincts. The colors range
-        from light purple to black, where lighter shades represent lower
-        percentages and darker shades represent higher percentages. Transparency
-        is also used to indicate the normalized vote counts, with lower
-        transparency for smaller precincts and higher transparency for larger
-        ones.
-      </p>
-
-      <p>The following colors and districts are highlighted on the map:</p>
-      <ul>
-        <li>
-          <strong>Multnomah Co Commissioner District 1:</strong> Light Coral
-        </li>
-        <li>
-          <strong>Multnomah Co Commissioner District 2:</strong> Medium Sea
-          Green
-        </li>
-        <li>
-          <strong>Multnomah Co Commissioner District 3:</strong> Cornflower Blue
-        </li>
-        <li>
-          <strong>Multnomah Co Commissioner District 4:</strong> Medium Orchid
-        </li>
-      </ul>
-
-      <p>
-        To read the dashboard, look at the color intensity and transparency of
-        each precinct. Darker colors indicate higher support for Nathan Vasquez,
-        while lighter colors indicate lower support. The transparency level
-        helps you understand the relative size of the precinct in terms of
-        normalized vote counts. District boundaries are outlined in different
-        colors for easy identification.
-      </p>
-
-      <p>Interactive features include:</p>
-      <ul>
-        <li>
-          Hovering over precincts to change the cursor to a pointer, indicating
-          interactivity.
-        </li>
-        <li>
-          A button to toggle between the full map and only the City of Portland,
-          allowing users to focus on urban voting patterns.
-        </li>
-      </ul>
-
-      <p>
-        This comprehensive visualization provides a clear and interactive way to
-        understand the election results, highlighting both the geographical and
-        numerical differences in voter support across Multnomah County.
-      </p>
+    <section class="page-header">
+        <div class="container">
+            <h1>Portland DA Race Results: Vasquez vs Schmidt 2024</h1>
+            <p class="live-link">Live Dashboard: <a href="https://steve-the-map-maker.github.io/DA-Results/" target="_blank">steve-the-map-maker.github.io/DA-Results/</a></p>
+        </div>
     </section>
 
-    <!-- How the Map Was Made Section -->
-    <section class="container my-5">
-      <h3 class="text-center mt-5">How the Map Was Made</h3>
-      <p>
-        The interactive map of the Vasquez vs Schmidt 2024 race was created
-        using several tools and data sources to provide an accurate view of the
-        electoral landscape across Multnomah County.
-      </p>
-      <ul>
-        <li>
-          <strong>Mapping Library:</strong> The map is built using
-          <a href="https://maplibre.org/" target="_blank">MapLibre</a>, an
-          open-source mapping library that allows for the creation of
-          high-quality, interactive maps.
-        </li>
-        <li>
-          <strong>Basemap:</strong> The basemap used is from
-          <a href="https://www.openstreetmap.org/" target="_blank"
-            >OpenStreetMap</a
-          >, a community-driven and detailed geographic data provider.
-        </li>
-        <li>
-          <strong>Data Sources:</strong> The election results data was sourced
-          from Multnomah County. The precinct-level results were joined with
-          GeoJSON boundary data to visualize the voting patterns across the
-          county effectively.
-        </li>
-      </ul>
-      <p>
-        The process of creating this map involved integrating data from
-        different sources, cleaning and transforming it to be suitable for
-        mapping, and then visualizing the data in an interactive format to help
-        users understand the voting distribution across Multnomah County and the
-        City of Portland.
-      </p>
+    <section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="iframe-container">
+                        <iframe src="https://steve-the-map-maker.github.io/DA-Results/" title="Portland DA Race Results: Vasquez vs Schmidt 2024" style="width: 100%; height: 80vh; min-height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>Project Overview</h2>
+                    <p>This dashboard provides a detailed analysis of the election results by district in Multnomah County, focusing on the DA race. It offers insights into how different districts performed and the distribution of votes.</p>
+
+                    <h2>District Results</h2>
+                    <p>Our data reveals the following vote counts for the candidates across different districts within Multnomah County and the City of Portland:</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>District</th>
+                                    <th>Candidate</th>
+                                    <th>County Votes</th>
+                                    <th>City Votes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3">Multnomah Co Commissioner District 1</td>
+                                    <td>Mike Schmidt</td>
+                                    <td>25,439</td>
+                                    <td>24,494</td>
+                                </tr>
+                                <tr>
+                                    <td>Nathan Vasquez</td>
+                                    <td>30,500</td>
+                                    <td>28,693</td>
+                                </tr>
+                                <tr>
+                                    <td>Write-In Votes</td>
+                                    <td>200</td>
+                                    <td>185</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">Multnomah Co Commissioner District 2</td>
+                                    <td>Mike Schmidt</td>
+                                    <td>30,485</td>
+                                    <td>29,010</td>
+                                </tr>
+                                <tr>
+                                    <td>Nathan Vasquez</td>
+                                    <td>27,601</td>
+                                    <td>26,297</td>
+                                </tr>
+                                <tr>
+                                    <td>Write-In Votes</td>
+                                    <td>225</td>
+                                    <td>209</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">Multnomah Co Commissioner District 3</td>
+                                    <td>Mike Schmidt</td>
+                                    <td>21,032</td>
+                                    <td>20,349</td>
+                                </tr>
+                                <tr>
+                                    <td>Nathan Vasquez</td>
+                                    <td>20,837</td>
+                                    <td>19,907</td>
+                                </tr>
+                                <tr>
+                                    <td>Write-In Votes</td>
+                                    <td>226</td>
+                                    <td>225</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">Multnomah Co Commissioner District 4</td>
+                                    <td>Mike Schmidt</td>
+                                    <td>9,993</td>
+                                    <td>24,271</td>
+                                </tr>
+                                <tr>
+                                    <td>Nathan Vasquez</td>
+                                    <td>20,720</td>
+                                    <td>43,022</td>
+                                </tr>
+                                <tr>
+                                    <td>Write-In Votes</td>
+                                    <td>214</td>
+                                    <td>34</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Total Results</h2>
+                    <p>The aggregated vote counts for all districts combined are:</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Candidate</th>
+                                    <th>County Votes</th>
+                                    <th>City Votes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mike Schmidt</td>
+                                    <td>86,949</td>
+                                    <td>76,280</td>
+                                </tr>
+                                <tr>
+                                    <td>Nathan Vasquez</td>
+                                    <td>99,658</td>
+                                    <td>79,199</td>
+                                </tr>
+                                <tr>
+                                    <td>Write-In Votes</td>
+                                    <td>865</td>
+                                    <td>653</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2><a data-toggle="collapse" href="#voteDistributionCollapse" role="button" aria-expanded="true" aria-controls="voteDistributionCollapse">Understanding the Vote Distribution</a></h2>
+                    <div class="collapse show" id="voteDistributionCollapse">
+                        <p>The data indicates a competitive race, with each district showing varied support for the candidates. The distribution of votes across districts highlights different levels of candidate preference, which can provide insights into regional support trends and voter turnout. Nathan Vasquez generally leads in both county and city contexts, with a more pronounced lead in the city, suggesting stronger urban support.</p>
+                    </div>
+
+                    <h2><a data-toggle="collapse" href="#methodsCollapse" role="button" aria-expanded="true" aria-controls="methodsCollapse">Methods</a></h2>
+                    <div class="collapse show" id="methodsCollapse">
+                        <h3>Data Processing</h3>
+                        <p>Data normalization was critical for fair comparison across precincts, adjusting vote counts to a common scale to mitigate the effect of varying precinct sizes. Transparency in the visualization represents this normalized data, where higher transparency indicates lower normalized values, and vice versa.</p>
+
+                        <h3>Data Visualization</h3>
+                        <p>The map visualization employs a color gradient to depict the percentage of votes for Nathan Vasquez across different precincts, ranging from light purple to black (lighter shades for lower percentages, darker for higher). Transparency indicates normalized vote counts. District boundaries are outlined in different colors for easy identification.</p>
+
+                        <p>Interactive features include hovering over precincts for interactivity and a button to toggle between the full map and only the City of Portland.</p>
+                    </div>
+
+                    <h2>Technology Stack</h2>
+                    <ul>
+                        <li>Mapping Library: MapLibre</li>
+                        <li>Basemap: OpenStreetMap</li>
+                        <li>Data Sources: Multnomah County election results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container text-center">
-        <p>&copy; 2024 Steve's Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2025 Steve Lantz Portfolio. All Rights Reserved.</p>
       </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
