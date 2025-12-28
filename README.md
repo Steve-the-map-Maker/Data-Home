@@ -12,6 +12,31 @@ Here is a summary of the projects featured in this portfolio.
 
 ---
 
+### LLM Poker Arena
+
+A Texas Hold'em platform where human players face Gemini and Claude personas—or spectate AI vs AI matchups with live table talk.
+
+*   **Live Application:** [Play online](https://poker-frontend-80hx.onrender.com/)
+*   **GitHub Repository:** [View code](https://github.com/Steve-the-map-Maker/LLM-Poker)
+*   **Project Details Page:** [Learn More](LlmPokerDetails.html)
+
+#### Key Features
+
+*   **Human vs AI:** Challenge themed LLM personas with distinct strategies and tone.
+*   **AI Showdowns:** Watch Gemini and Claude battle each other and narrate their reasoning in real time.
+*   **Imperfect-Information Lens:** Compare how different models manage bluffing, incomplete information, and risk.
+*   **Accurate Rules Engine:** PokerKit powers betting rounds, hand evaluation, and results.
+*   **Dark, Responsive UI:** Real-time action log, chat-style table talk, and mobile-friendly layout.
+
+#### Technology Stack
+
+*   **Frontend:** React, TypeScript, modern CSS styling
+*   **Backend:** Python, FastAPI, PokerKit
+*   **AI Integration:** Google Gemini, Anthropic Claude
+*   **Hosting:** Render (frontend)
+
+---
+
 ### 1. Pickleball Courts Map
 
 An interactive web application designed to help users discover pickleball court locations in the Portland area. This map provides a dynamic visualization of court data and offers various filtering options to enhance your search.

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Poker Arena: AI Texas Hold'em</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RKNWFF2E1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0RKNWFF2E1');
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 6rem 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.8rem;
+          line-height: 1.3;
+        }
+        
+        .page-header .live-link {
+          font-size: 0.9rem;
+          word-break: break-all;
+        }
+        
+        .iframe-container iframe {
+          height: 60vh !important;
+          min-height: 400px !important;
+        }
+        
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        h2 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .col-lg-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        ul li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+        
+        .section {
+          padding: 2rem 0;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        .page-header {
+          padding: 5rem 0.5rem 1.5rem;
+        }
+        
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .iframe-container iframe {
+          height: 50vh !important;
+          min-height: 350px !important;
+        }
+        
+        .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
+        
+        .col-lg-10 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="index.html">Steve Lantz</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-header">
+      <div class="container">
+        <h1>LLM Poker Arena: AI Texas Hold'em</h1>
+        <p class="live-link">Live App: <a href="https://poker-frontend-80hx.onrender.com/" target="_blank">poker-frontend-80hx.onrender.com</a></p>
+        <p class="live-link">Source Code: <a href="https://github.com/Steve-the-map-Maker/LLM-Poker" target="_blank">github.com/Steve-the-map-Maker/LLM-Poker</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 mb-5">
+            <div class="iframe-container">
+              <iframe src="https://poker-frontend-80hx.onrender.com/" title="LLM Poker Arena" style="width: 100%; height: 80vh; min-height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10 offset-lg-1">
+            <h2>Project Overview</h2>
+            <p>LLM Poker Arena blends traditional Texas Hold'em mechanics with conversational AI opponents. The app pairs a PokerKit rules engine with Gemini and Claude personas so players can challenge distinct styles—or watch the models battle each other and narrate their table talk.</p>
+
+            <h2>Key Features</h2>
+            <ul>
+              <li><strong>Human vs. AI play:</strong> Sit down against themed LLM personas (Gemini, Claude) that shift strategy and tone based on their character.</li>
+              <li><strong>AI vs. AI spectating:</strong> Launch head-to-head AI matches and follow decisions, bets, and table banter in real time.</li>
+              <li><strong>Model showdowns:</strong> Pit different providers against each other to see how they handle imperfect-information play and bluffing.</li>
+              <li><strong>Table talk and reasoning:</strong> Each LLM explains (or bluffs about) its moves, giving insight into its decision process.</li>
+              <li><strong>Accurate game engine:</strong> PokerKit enforces betting rounds, blinds, hand evaluation, and showdown results.</li>
+              <li><strong>Live action log:</strong> Streamed updates for chip stacks, bets, community cards, and winners keep the UI aligned with the engine.</li>
+              <li><strong>Modern dark UI:</strong> React and TypeScript with glassmorphism styling, optimized for both desktop and mobile play.</li>
+            </ul>
+
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> React, TypeScript, modern CSS styling.</li>
+              <li><strong>Backend:</strong> Python, FastAPI, PokerKit for deterministic hand logic.</li>
+              <li><strong>AI Integration:</strong> Google Gemini and Anthropic Claude personas.</li>
+              <li><strong>Deployment:</strong> Render-hosted frontend for easy access on any browser.</li>
+            </ul>
+
+            <h2>What I Built</h2>
+            <ul>
+              <li>Integrated PokerKit with LLM-driven personas so game state, betting, and table talk stay in sync.</li>
+              <li>Designed the React UI for spectating and playing, including live hand history and chip state updates.</li>
+              <li>Created persona prompts and routing that let players swap between aggressive, conservative, or playful AI styles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p>&copy; 2025 Steve Lantz Portfolio. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
